@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  OCId               String            @id @unique
+  name               String?
+  email              String?
+  bio                String?
+  isOnboarded        Boolean
+  education          Education[]
+  skills             Skill[]
+  interests          Json?
+  experience         Experience[]
+  assessmentTest     SelfAssessment[]
+
+  // AI-generated data
+  recommendedIndustry  String?
+  recommendedRoles     RecommendedRole[]
+  strategySteps        StrategyStep[]
+  alternativeOptions   Json?
+  skillGaps            SkillGap[]
+  summary              String?
+  skillsRequired       SkillRequired[]
+
+  resume             Resume?
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime?          @updatedAt
+}
+
+model SkillGap {
+  id          String     @id @default(uuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [OCId])
+  name        String
+  overcoming  String
+  resources   Resource[] 
+}
+
+model StrategyStep {
+  id      String @id @default(uuid())
+  userId  String
+  user    User   @relation(fields: [userId], references: [OCId])
+  phase   String
+  action  String
+  outcomes String
+}
+
+model Resume {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [OCId])
+  content   String
+  atsScore  Float?
+  feedback  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Education {
+  id           String @id @default(uuid())
+  userId       String
+  user         User   @relation(fields: [userId], references: [OCId])
+  institution  String
+  degree       String
+  fieldOfStudy String
+  startYear    String
+  endYear      String
+}
+
+model Skill {
+  id          String @id @default(uuid())
+  userId      String
+  user        User   @relation(fields: [userId], references: [OCId])
+  proficiency Int
+}
+
+model Experience {
+  id              String  @id @default(uuid())
+  userId          String
+  user            User    @relation(fields: [userId], references: [OCId])
+  title           String
+  company         String
+  location        String
+  startDate       String
+  endDate         String
+  currentlyWorking Boolean
+  description     String?
+}
+
+model SelfAssessment {
+  id       String @id @default(uuid())
+  userId   String
+  user     User   @relation(fields: [userId], references: [OCId])
+  question String
+  answer   String
+}
+
+model RecommendedRole {
+  id             String          @id @default(uuid())
+  userId         String
+  user           User            @relation(fields: [userId], references: [OCId])
+  name           String
+  matchPercentage Float
+  description     String
+  outlook         String
+  skillsRequired SkillRequired[]
+  salaryRanges   SalaryRange[]
+  resources      Resource[]      
+}
+
+model SalaryRange {
+  id       String          @id @default(uuid())
+  roleId   String
+  role     RecommendedRole @relation(fields: [roleId], references: [id])
+  location String
+  min      Float
+  max      Float
+  median   Float
+}
+
+model Resource {
+  id               String           @id @default(uuid())
+  name             String
+  link             String
+
+  // Relations
+  recommendedRoles RecommendedRole[]
+  skillGaps        SkillGap[]
+  skillRequireds   SkillRequired[]
+}
+
+model SkillRequired {
+  id              String           @id @default(uuid())
+  name            String
+  type            String
+  
+  // Relations
+  userId          String
+  user            User             @relation(fields: [userId], references: [OCId])
+  recommendedRole RecommendedRole? @relation(fields: [roleId], references: [id])
+  roleId          String?
+  resources       Resource[]
+}
