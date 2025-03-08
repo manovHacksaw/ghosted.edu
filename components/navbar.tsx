@@ -112,6 +112,8 @@ export default function Navbar() {
           
           <NavLink href="/jobs">Internships</NavLink>
           <NavLink href="/pricing">Pricing</NavLink>
+          <NavLink href="/resume">Resume Builder</NavLink>
+
         </div>
 
         <div className="hidden md:flex items-center space-x-4">

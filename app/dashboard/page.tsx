@@ -44,6 +44,7 @@ interface CareerRecommendation {
   salaryRange?: string
   growthPotential?: string
   marketDemand?: string
+  applicationLink?: string
 }
 
 interface SkillAnalysis {
@@ -308,24 +309,37 @@ export default function DashboardPage({ initialFormData }: DashboardPageProps) {
                         </Badge>
                       ))}
                     </div>
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
-                      {career.salaryRange && (
-                        <div className="flex items-center gap-1">
-                          <Award className="h-4 w-4 text-[#00EDBE]" />
-                          <span>{career.salaryRange}</span>
-                        </div>
-                      )}
-                      {career.growthPotential && (
-                        <div className="flex items-center gap-1">
-                          <TrendingUp className="h-4 w-4 text-[#00EDBE]" />
-                          <span>{career.growthPotential}</span>
-                        </div>
-                      )}
-                      {career.marketDemand && (
-                        <div className="flex items-center gap-1">
-                          <LineChart className="h-4 w-4 text-[#00EDBE]" />
-                          <span>{career.marketDemand}</span>
-                        </div>
+                    <div className="flex flex-wrap items-center justify-between gap-4">
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+                        {career.salaryRange && (
+                          <div className="flex items-center gap-1">
+                            <Award className="h-4 w-4 text-[#00EDBE]" />
+                            <span>{career.salaryRange}</span>
+                          </div>
+                        )}
+                        {career.growthPotential && (
+                          <div className="flex items-center gap-1">
+                            <TrendingUp className="h-4 w-4 text-[#00EDBE]" />
+                            <span>{career.growthPotential}</span>
+                          </div>
+                        )}
+                        {career.marketDemand && (
+                          <div className="flex items-center gap-1">
+                            <LineChart className="h-4 w-4 text-[#00EDBE]" />
+                            <span>{career.marketDemand}</span>
+                          </div>
+                        )}
+                      </div>
+                      {career.applicationLink && (
+                        <Button
+                          variant="outline"
+                          className="text-[#00EDBE] border-white/10 hover:bg-white/5"
+                          asChild
+                        >
+                          <Link href={career.applicationLink} target="_blank">
+                            Apply Now <ExternalLink className="ml-2 h-4 w-4" />
+                          </Link>
+                        </Button>
                       )}
                     </div>
                   </div>
@@ -593,126 +607,136 @@ export default function DashboardPage({ initialFormData }: DashboardPageProps) {
   )
 }
 
-// Function to generate sample data if none exists in localStorage
 function generateSampleData(): CareerInsights {
   return {
-    matchScore: 78,
+    matchScore: 85,
     topCareers: [
       {
-        title: "UX/UI Designer",
-        matchPercentage: 87,
-        description: "Design user-centered digital experiences for websites and applications.",
-        tags: ["Design", "User Research", "Prototyping"],
-        salaryRange: "$75K - $120K",
+        title: "Blockchain Developer",
+        matchPercentage: 90,
+        description: "Develop decentralized applications and smart contracts on blockchain networks.",
+        tags: ["Solidity", "Ethereum", "Rust", "Smart Contracts"],
+        salaryRange: "$100K - $180K",
         growthPotential: "High Growth",
-        marketDemand: "Strong Demand",
+        marketDemand: "Very High",
+        applicationLink: "https://web3.career/r/=EjN3cTO__nqgcSC"
       },
       {
-        title: "Frontend Developer",
-        matchPercentage: 82,
-        description: "Build responsive and interactive user interfaces using modern web technologies.",
-        tags: ["React", "JavaScript", "CSS"],
-        salaryRange: "$80K - $130K",
-        growthPotential: "Steady",
-        marketDemand: "Very High",
+        title: "Web3  Engineer",
+        matchPercentage: 83,
+        description: "Build decentralized application (dApp) interfaces that interact with smart contracts.",
+        tags: ["React", "Ethers.js", "Web3.js", "TailwindCSS"],
+        salaryRange: "$90K - $150K",
+        growthPotential: "High",
+        marketDemand: "Strong Demand",
+        applicationLink: "https://web3.career/r/=cDO2cTO__nqgcSC"
       },
     ],
     skillsAnalysis: [
       {
-        name: "JavaScript",
-        level: 75,
+        name: "Solidity",
+        level: 80,
         category: "Technical",
         importance: "High",
       },
       {
-        name: "UI Design",
-        level: 85,
-        category: "Creative",
-        importance: "High",
-      },
-      {
-        name: "Communication",
+        name: "Cryptography",
         level: 70,
-        category: "Soft Skill",
+        category: "Security",
+        importance: "High",
+      },
+      {
+        name: "Smart Contract Development",
+        level: 85,
+        category: "Blockchain",
+        importance: "High",
+      },
+      {
+        name: "React.js",
+        level: 75,
+        category: "Frontend",
         importance: "Medium",
       },
       {
-        name: "Data Analysis",
-        level: 45,
-        category: "Technical",
-        importance: "Medium",
-      },
-      {
-        name: "Project Management",
+        name: "Rust",
         level: 60,
-        category: "Organizational",
-        importance: "Low",
+        category: "Backend",
+        importance: "Medium",
       },
     ],
     strengthsWeaknesses: {
-      strengths: ["Creative problem solving", "Visual communication", "User empathy", "Rapid prototyping skills"],
-      weaknesses: ["Backend development knowledge", "Statistical analysis", "Public speaking", "Time management"],
-      marketCompetitiveness: "Above Average",
+      strengths: [
+        "Understanding of blockchain fundamentals",
+        "Smart contract development",
+        "Decentralized application architecture",
+        "Security best practices",
+      ],
+      weaknesses: [
+        "Scalability optimization knowledge",
+        "Advanced cryptographic algorithms",
+        "Cross-chain interoperability",
+        "Backend microservices in Web3",
+      ],
+      marketCompetitiveness: "High",
       improvementAreas: [
-        "Learn fundamental backend concepts",
-        "Take a course on data analysis",
-        "Join Toastmasters to improve public speaking",
+        "Learn zero-knowledge proofs and Layer 2 solutions",
+        "Contribute to open-source Web3 projects",
+        "Gain experience with cross-chain development",
       ],
     },
     nextSteps: [
       {
-        title: "Complete UX Certification",
-        description: "Enroll in the Google UX Design Professional Certificate to enhance your design credentials.",
-        icon: "education",
+        title: "Master Solidity Development",
+        description: "Deepen your expertise in smart contract development using Solidity.",
+        icon: "learning",
         timeline: "3-6 months",
         priority: "high",
-        resources: ["Google UX Design Course", "Interaction Design Foundation Courses"],
+        resources: ["Ethereum Docs", "CryptoZombies", "Solidity by Example"],
       },
       {
-        title: "Build Portfolio Projects",
-        description: "Create 2-3 new case studies showcasing your design process for different types of applications.",
-        icon: "skills",
-        timeline: "2-4 months",
+        title: "Contribute to Web3 Open Source Projects",
+        description: "Work on blockchain-based projects to gain practical experience.",
+        icon: "experience",
+        timeline: "Ongoing",
         priority: "high",
+        resources: ["Gitcoin Bounties", "Ethereum Foundation Grants"],
       },
       {
-        title: "Expand Professional Network",
-        description:
-          "Attend design meetups and conferences to connect with industry professionals and potential mentors.",
-        icon: "network",
+        title: "Explore Zero-Knowledge Proofs",
+        description: "Learn about zk-SNARKs and zk-STARKs to develop scalable privacy-focused applications.",
+        icon: "learning",
+        timeline: "3-6 months",
+        priority: "medium",
+        resources: ["ZKProof.org", "Polygon zkEVM Documentation"],
+      },
+      {
+        title: "Stay Updated with Web3 Trends",
+        description: "Follow industry news and updates to stay ahead in blockchain technology.",
+        icon: "skills",
         timeline: "Ongoing",
         priority: "medium",
-        resources: ["Local UX/Design Meetups", "Design Conferences Calendar"],
-      },
-      {
-        title: "Learn React Framework",
-        description: "Strengthen your frontend development skills by mastering React to create interactive UIs.",
-        icon: "learning",
-        timeline: "2-3 months",
-        priority: "medium",
-        resources: ["React Documentation", "Frontend Masters Courses"],
+        resources: ["Bankless Newsletter", "Messari Research"],
       },
     ],
     marketInsights: {
       trends: [
-        "Increased demand for designers with coding skills",
-        "Growth in product design roles across industries",
-        "Rise of design systems and component libraries",
-        "Greater emphasis on accessibility and inclusive design",
+        "Rapid adoption of Layer 2 scaling solutions",
+        "Institutional interest in DeFi and NFTs",
+        "Growth of decentralized identity solutions",
+        "Expansion of DAOs for governance",
       ],
       opportunities: [
-        "Remote work positions expanding globally",
-        "Fintech and healthcare sectors investing heavily in UX",
-        "Freelance and contract opportunities growing",
-        "Design leadership roles emerging in tech companies",
+        "High-paying smart contract auditing roles",
+        "Demand for Web3 UX/UI designers",
+        "Cross-chain bridge development",
+        "Growth of play-to-earn gaming",
       ],
       challenges: [
-        "Increasingly competitive job market",
-        "Need for continuous skill development",
-        "Balancing aesthetics with business requirements",
-        "Keeping up with rapidly evolving design tools",
+        "Scalability and gas fee optimization",
+        "Regulatory uncertainty in different countries",
+        "Security vulnerabilities in smart contracts",
+        "User experience barriers in dApp adoption",
       ],
     },
-  }
+  };
 }
-
