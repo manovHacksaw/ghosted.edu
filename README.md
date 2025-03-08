@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ghosted.edu
 
-## Getting Started
+A modern educational platform that helps students track and manage their job applications while providing AI-powered insights and support.
 
-First, run the development server:
+## 🌟 Features
 
+- **Smart Dashboard**: Track and manage your job applications in one place
+- **AI Integration**: Powered by Google's Generative AI for intelligent insights
+- **OpenCampus Authentication**: Secure login system using OpenCampus ID Connect
+- **Interactive UI**: Beautiful, responsive interface with modern animations
+- **Pricing Plans**: Flexible subscription options for different user needs
+
+## 🚀 Tech Stack
+
+- **Frontend**: Next.js 15.1.7 with TypeScript and App Router
+- **Styling**: Tailwind CSS with custom animations
+- **UI Components**: Radix UI for accessible components
+- **Database**: Prisma ORM
+- **Authentication**: OpenCampus ID Connect
+- **AI**: Google Generative AI
+
+## 📦 Prerequisites
+
+- Node.js 18.x or higher
+- npm or yarn
+- A database supported by Prisma (e.g., PostgreSQL)
+- OpenCampus ID Connect credentials
+- Google Generative AI API key
+
+## 🛠️ Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/ghosted.edu.git
+cd ghosted.edu
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables:
+Create a `.env` file in the root directory with the following variables:
+```env
+token
+DATABASE_URL
+GEMINI_API_KEY
+```
+
+4. Run database migrations:
+```bash
+npx prisma migrate dev
+```
+
+5. Start the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/                  # Next.js app router pages
+│   ├── api/             # API routes
+│   ├── dashboard/       # Dashboard views
+│   ├── jobs/           # Job management
+│   ├── onboarding/     # User onboarding
+│   └── pricing/        # Pricing plans
+├── components/          # Reusable UI components
+├── context/            # React context providers
+├── lib/                # Utility functions
+└── prisma/             # Database schema and migrations
+```
 
-## Learn More
+## 🔧 Development
 
-To learn more about Next.js, take a look at the following resources:
+- **Running Tests**:
+```bash
+npm run test
+# or
+yarn test
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Linting**:
+```bash
+npm run lint
+# or
+yarn lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Building for Production**:
+```bash
+npm run build
+# or
+yarn build
+```
 
-## Deploy on Vercel
+## 🚀 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The application is optimized for deployment on Vercel. To deploy:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Configure environment variables in Vercel dashboard
+4. Deploy!
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+
+For support, email [debanjanmondalk2005@gmail.com] or open an issue in the GitHub repository.
