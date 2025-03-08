@@ -49,7 +49,7 @@ export default function Hero() {
           >
             <Button size="lg" className="rounded-xl bg-[#141BEB] hover:bg-[#141BEB]/80 text-white px-8">
               <UserCircle className="mr-2 h-5 w-5" />
-              Create Profile
+             <Link href="/onboarding"> Create Profile</Link>
             </Button>
             <Button size="lg" variant="outline" className="rounded-xl text-white border-[#00EDBE] hover:bg-[#00EDBE]/20">
               <Sparkles className="mr-2 h-5 w-5" />

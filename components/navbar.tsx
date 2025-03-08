@@ -87,7 +87,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center space-x-8">
           <NavLinkWithDropdown 
             name="explore"
-            mainLink={{ href: "/explore", label: "Explore Careers" }}
+            mainLink={{ href: "/jobs", label: "Explore Careers" }}
             isActive={activeDropdown === "explore"}
             onClick={toggleDropdown}
             dropdownItems={[
