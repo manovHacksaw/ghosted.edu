@@ -112,6 +112,7 @@ export default function DashboardPage({ initialFormData }: DashboardPageProps) {
           } else {
             insightData = parsedData.response
           }
+          
 
           if (insightData) {
             setInsights({

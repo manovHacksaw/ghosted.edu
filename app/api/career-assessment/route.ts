@@ -444,7 +444,7 @@ export async function POST(req: Request) {
       }, {
         timeout: 120000 // 60 second timeout for the transaction
       })
-
+        localStorage.setItem('careerInsights',response)
       console.log(`User ${data.OCId} onboarded and insights saved.`)
       return NextResponse.json({
         success: true,
