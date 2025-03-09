@@ -110,8 +110,9 @@ export default function Navbar() {
             ]}
           />
           
-          <NavLink href="/jobs">Internships</NavLink>
+          {/* <NavLink href="/jobs">Internships</NavLink> */}
           <NavLink href="/pricing">Pricing</NavLink>
+          <NavLink href="/dashboard">Dashboard</NavLink>
           <NavLink href="/resume">Resume Builder</NavLink>
 
         </div>
