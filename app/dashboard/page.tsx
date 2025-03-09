@@ -34,6 +34,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { SparklesCore } from "@/components/sparkles"
 import { FloatingPaper } from "@/components/floating-paper"
+import { WelcomePopup } from "./_components/WelcomePopup"
 
 // Define types for better type safety
 interface CareerRecommendation {
@@ -602,6 +603,7 @@ export default function DashboardPage({ initialFormData }: DashboardPageProps) {
             </Card>
           )}
         </div>
+        <WelcomePopup/>
       </main>
     </div>
   )

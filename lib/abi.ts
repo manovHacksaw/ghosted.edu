@@ -1,6 +1,6 @@
-export const abi = [{
+const abi ={
 	"compiler": {
-		"version": "0.8.26+commit.8a97fa7a"
+		"version": "0.8.28+commit.7893614a"
 	},
 	"language": "Solidity",
 	"output": {
@@ -18,6 +18,12 @@ export const abi = [{
 						"indexed": true,
 						"internalType": "address",
 						"name": "applicant",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "ocidAddress",
 						"type": "address"
 					},
 					{
@@ -52,6 +58,12 @@ export const abi = [{
 						"type": "address"
 					},
 					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "ocidAddress",
+						"type": "address"
+					},
+					{
 						"indexed": false,
 						"internalType": "uint256",
 						"name": "timestamp",
@@ -66,18 +78,92 @@ export const abi = [{
 				"inputs": [
 					{
 						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "ocidAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					}
+				],
+				"name": "EduTokensAwarded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
 						"internalType": "bytes32",
 						"name": "appId",
 						"type": "bytes32"
 					},
 					{
 						"indexed": false,
-						"internalType": "enum Ghosted.ApplicationStatus",
+						"internalType": "enum EDUChain.ApplicationStatus",
 						"name": "newStatus",
 						"type": "uint8"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "updatedBy",
+						"type": "address"
 					}
 				],
 				"name": "StatusUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "ocidAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "enum EDUChain.UserType",
+						"name": "userType",
+						"type": "uint8"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "UserOnboarded",
 				"type": "event"
 			},
 			{
@@ -106,7 +192,7 @@ export const abi = [{
 						"type": "string"
 					},
 					{
-						"internalType": "enum Ghosted.ApplicationStatus",
+						"internalType": "enum EDUChain.ApplicationStatus",
 						"name": "status",
 						"type": "uint8"
 					},
@@ -119,6 +205,11 @@ export const abi = [{
 						"internalType": "uint256",
 						"name": "timestamp",
 						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "ocidHash",
+						"type": "string"
 					}
 				],
 				"stateMutability": "view",
@@ -152,7 +243,7 @@ export const abi = [{
 								"type": "string"
 							},
 							{
-								"internalType": "enum Ghosted.ApplicationStatus",
+								"internalType": "enum EDUChain.ApplicationStatus",
 								"name": "status",
 								"type": "uint8"
 							},
@@ -165,14 +256,130 @@ export const abi = [{
 								"internalType": "uint256",
 								"name": "timestamp",
 								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "ocidHash",
+								"type": "string"
 							}
 						],
-						"internalType": "struct Ghosted.Application",
+						"internalType": "struct EDUChain.Application",
 						"name": "",
 						"type": "tuple"
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					}
+				],
+				"name": "getUserProfile",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					},
+					{
+						"internalType": "enum EDUChain.UserType",
+						"name": "userType",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "eduTokenBalance",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isOnboarded",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "ocidAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "ocidToWallet",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_email",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_message",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "_shareEmail",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "_shareName",
+						"type": "bool"
+					},
+					{
+						"internalType": "enum EDUChain.UserType",
+						"name": "_userType",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "_ocidAddress",
+						"type": "address"
+					}
+				],
+				"name": "onboardUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -220,7 +427,7 @@ export const abi = [{
 						"type": "bytes32"
 					},
 					{
-						"internalType": "enum Ghosted.ApplicationStatus",
+						"internalType": "enum EDUChain.ApplicationStatus",
 						"name": "_newStatus",
 						"type": "uint8"
 					}
@@ -229,11 +436,135 @@ export const abi = [{
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "userProfiles",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "email",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "shareEmail",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "shareName",
+						"type": "bool"
+					},
+					{
+						"internalType": "enum EDUChain.UserType",
+						"name": "userType",
+						"type": "uint8"
+					},
+					{
+						"internalType": "bool",
+						"name": "isOnboarded",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "onboardingTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "eduTokenBalance",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "ocidAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "walletToOcid",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
+			"details": "Smart contract for the EDU Chain platform that handles user onboarding, application tracking, and reputation management with OCID integration",
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"getApplication(bytes32)": {
+					"params": {
+						"_appId": "Identifier for the application"
+					}
+				},
+				"getUserProfile(address)": {
+					"params": {
+						"_user": "Address of the user to fetch"
+					}
+				},
+				"onboardUser(string,string,string,bool,bool,uint8,address)": {
+					"params": {
+						"_email": "User's email (can be empty if shareEmail is false)",
+						"_message": "User's onboarding message",
+						"_name": "User's name (can be empty if shareName is false)",
+						"_ocidAddress": "The OCID address to link with this account",
+						"_shareEmail": "Whether to share email publicly",
+						"_shareName": "Whether to share name publicly",
+						"_userType": "Type of user (Applicant or Recruiter)"
+					}
+				},
+				"recordView(bytes32)": {
+					"params": {
+						"_appId": "Identifier for the application"
+					}
+				},
+				"submitApplication(string,string)": {
+					"params": {
+						"_jobId": "Identifier for the job",
+						"_metadataURI": "URI pointing to application metadata (IPFS)"
+					}
+				},
+				"updateStatus(bytes32,uint8)": {
+					"params": {
+						"_appId": "Identifier for the application",
+						"_newStatus": "New status to set for the application"
+					}
+				}
+			},
+			"title": "EDUChain",
 			"version": 1
 		},
 		"userdoc": {
@@ -241,6 +572,12 @@ export const abi = [{
 			"methods": {
 				"getApplication(bytes32)": {
 					"notice": "Fetch application details"
+				},
+				"getUserProfile(address)": {
+					"notice": "Get user profile (only shared fields if not own profile)"
+				},
+				"onboardUser(string,string,string,bool,bool,uint8,address)": {
+					"notice": "Onboard a new user to the platform"
 				},
 				"recordView(bytes32)": {
 					"notice": "Record recruiter view on an application"
@@ -257,7 +594,7 @@ export const abi = [{
 	},
 	"settings": {
 		"compilationTarget": {
-			"edu.sol": "Ghosted"
+			"contracts/Ghosted.sol": "EDUChain"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -271,14 +608,15 @@ export const abi = [{
 		"remappings": []
 	},
 	"sources": {
-		"edu.sol": {
-			"keccak256": "0x4fbb44ef1dbf5043864befe2767ff5ba940656f3d37b0c572cc45df5c298fb7a",
+		"contracts/Ghosted.sol": {
+			"keccak256": "0xc52e18addeb95296ed4032ffd0edcffd0b12d8a77d5db39d9bd8681aef0481f1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6962e01a254e4f3105e12c34714c98174d28cc7a5c7d4f7f8dbefd17e6e756b1",
-				"dweb:/ipfs/QmT4CPeQbVZ6XxyEJqquLk9Ld2e3sWbv1iq3PvnbEjUsk9"
+				"bzz-raw://bf011f1fbd70e638bb4bff7ee63ad388e423336edf67de84a3262755e09cc799",
+				"dweb:/ipfs/QmTngTTXNidpiV8BNo2NQU1wuFw2LG8PVKQ3f54EmxU1GG"
 			]
 		}
 	},
 	"version": 1
-}]
+}
+export default abi.output.abi;
