@@ -19,11 +19,7 @@ import {
   ChevronRight,
   AlertCircle,
   Plus,
-  User,
-  Bell,
-  Settings,
   ExternalLink,
-  Ghost,
 } from "lucide-react"
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -31,7 +27,6 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { SparklesCore } from "@/components/sparkles"
 import { FloatingPaper } from "@/components/floating-paper"
 import { WelcomePopup } from "./_components/WelcomePopup"
