@@ -13,14 +13,14 @@ export function WelcomePopup() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(true)
-    }, 10000)
+    }, 40000)
 
     return () => clearTimeout(timer)
   }, [])
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen} modal={true}>
-      <DialogContent className="sm:max-w-md bg-gradient-to-br from-black via-gray-900 to-black border border-white/10 shadow-xl shadow-blue-500/10" hideClose>
+      <DialogContent className="sm:max-w-md bg-gradient-to-br from-black via-gray-900 to-black border border-white/10 shadow-xl shadow-blue-500/10">
         <div className="text-center space-y-4 py-2">
           <div className="flex justify-center items-center space-x-2 text-3xl animate-pulse">
             <span>✨</span>

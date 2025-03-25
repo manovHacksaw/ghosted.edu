@@ -36,55 +36,7 @@ import { SparklesCore } from "@/components/sparkles"
 import { FloatingPaper } from "@/components/floating-paper"
 import { WelcomePopup } from "./_components/WelcomePopup"
 
-// Define types for better type safety
-interface CareerRecommendation {
-  title: string
-  matchPercentage: number
-  description: string
-  tags: string[]
-  salaryRange?: string
-  growthPotential?: string
-  marketDemand?: string
-  applicationLink?: string
-}
-
-interface SkillAnalysis {
-  name: string
-  level: number
-  category?: string
-  importance?: string
-}
-
-interface StrengthsWeaknesses {
-  strengths: string[]
-  weaknesses: string[]
-  marketCompetitiveness?: string
-  improvementAreas?: string[]
-}
-
-interface NextStep {
-  title: string
-  description: string
-  icon: "education" | "skills" | "network" | "learning" | "experience" | "location"
-  timeline?: string
-  priority?: "high" | "medium" | "low"
-  resources?: string[]
-}
-
-interface CareerInsights {
-  topCareers: CareerRecommendation[]
-  skillsAnalysis: SkillAnalysis[]
-  strengthsWeaknesses: StrengthsWeaknesses
-  nextSteps: NextStep[]
-  matchScore: number
-  marketInsights?: {
-    trends: string[]
-    opportunities: string[]
-    challenges: string[]
-  }
-}
-
-export default function DashboardPage({ initialFormData }: DashboardPageProps) {
+export default function DashboardPage({ initialFormData }) {
   const [insights, setInsights] = useState<CareerInsights | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -609,7 +561,7 @@ export default function DashboardPage({ initialFormData }: DashboardPageProps) {
   )
 }
 
-function generateSampleData(): CareerInsights {
+function generateSampleData(){
   return {
     matchScore: 85,
     topCareers: [
