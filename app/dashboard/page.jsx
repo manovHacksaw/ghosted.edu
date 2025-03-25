@@ -32,10 +32,10 @@ import { FloatingPaper } from "@/components/floating-paper"
 import { WelcomePopup } from "./_components/WelcomePopup"
 
 export default function DashboardPage({ initialFormData }) {
-  const [insights, setInsights] = useState<CareerInsights | null>(null)
+  const [insights, setInsights] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const [formData, setFormData] = useState<any>(null)
+  const [error, setError] = useState(null)
+  const [formData, setFormData] = useState(null)
 
   useEffect(() => {
     const fetchInsightsFromStorage = () => {
